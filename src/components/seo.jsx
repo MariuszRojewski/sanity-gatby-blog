@@ -11,7 +11,9 @@ export const SEO = ({ title, description, pathname, children }) => {
     twitterUsername,
   } = useSiteMetadata();
 
-  console.log("SEO: ", title, description, image, siteUrl, twitterUsername);
+  console.log("---------------------------------");
+  console.log("SEO TITLE: ", title);
+  console.log("SEO DESC: ", description);
 
   const seo = {
     title: title || defaultTitle,

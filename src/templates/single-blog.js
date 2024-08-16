@@ -37,12 +37,24 @@ export const query = graphql`
           current
         }
       }
+
+      seo {
+        title
+        description
+        image {
+          asset {
+            gatsbyImageData
+          }
+        }
+        twitterUsername
+      }
     }
   }
 `;
 
 const SingleBlog = ({ data }) => {
   const blog = data.sanityBlog;
+
   return (
     <SingleBlogStyles>
       <SEO title={blog.title} />
@@ -91,4 +103,15 @@ const SingleBlog = ({ data }) => {
 
 export default SingleBlog;
 
-export const Head = () => <SEO title="Post" />;
+export const Head = ({ data }) => {
+  const { title, description, image, twitterUsername } = data.sanityBlog.seo;
+
+  return (
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      twitterUsername={twitterUsername}
+    />
+  );
+};
