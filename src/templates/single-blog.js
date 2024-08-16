@@ -104,7 +104,15 @@ const SingleBlog = ({ data }) => {
 export default SingleBlog;
 
 export const Head = ({ data }) => {
-  const { title, description, image, twitterUsername } = data.sanityBlog.seo;
+  const defaultTitle = data.sanityBlog.title || "";
+  const seo = data.sanityBlog.seo || {};
+
+  const {
+    title = defaultTitle,
+    description = "",
+    image = "",
+    twitterUsername = "",
+  } = seo;
 
   return (
     <SEO
