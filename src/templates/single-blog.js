@@ -12,7 +12,6 @@ import MyPortableText from "../components/MyPortableText";
 import { SEO } from "../components/seo";
 
 // Alt nie chodzi poprawnie
-
 export const query = graphql`
   query SingleBlogQuery($id: String!) {
     sanityBlog(id: { eq: $id }) {
@@ -104,22 +103,7 @@ const SingleBlog = ({ data }) => {
 export default SingleBlog;
 
 export const Head = ({ data }) => {
-  const defaultTitle = data.sanityBlog.title || "";
-  const seo = data.sanityBlog.seo || {};
+  const dataSeo = data.sanityBlog.seo || {};
 
-  const {
-    title = defaultTitle,
-    description = "",
-    image = "",
-    twitterUsername = "",
-  } = seo;
-
-  return (
-    <SEO
-      title={title}
-      description={description}
-      image={image}
-      twitterUsername={twitterUsername}
-    />
-  );
+  return <SEO data={dataSeo} />;
 };
