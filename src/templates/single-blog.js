@@ -56,7 +56,6 @@ const SingleBlog = ({ data }) => {
 
   return (
     <SingleBlogStyles>
-      <SEO title={blog.title} />
       <PageSpace top={80} bottom={100}>
         <div className="container">
           <div className="blog-header">
@@ -105,5 +104,8 @@ export default SingleBlog;
 export const Head = ({ data }) => {
   const dataSeo = data.sanityBlog.seo || {};
 
-  return <SEO data={dataSeo} />;
+  const title = dataSeo.title;
+  const description = dataSeo.description;
+
+  return <SEO title={title} description={description} />;
 };

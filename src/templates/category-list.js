@@ -32,7 +32,6 @@ const CategoryList = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO title="Categories" />
       <PageSpace top={80} bottom={100}>
         <div className="container">
           <PageHeader
@@ -55,4 +54,14 @@ const CategoryList = ({ data, pageContext }) => {
 
 export default CategoryList;
 
-export const Head = () => <SEO title="Category listy" />;
+// Trzeba ogarnąć lokalizacje tych danych, obecnie sa pobierane na czuja
+// i nie minstancji w Sanity Studio
+
+export const Head = ({ data }) => {
+  const dataSeo = data.allSanityCategory.seo || {};
+
+  const title = dataSeo.title;
+  const description = dataSeo.description;
+
+  return <SEO title={title} description={description} />;
+};

@@ -33,7 +33,6 @@ const AuthorList = ({ data, pageContext }) => {
 
   return (
     <PageSpace top={80} bottom={100}>
-      <SEO title="Authors" />
       <div className="container">
         <PageHeader
           title="All Authors"
@@ -53,3 +52,15 @@ const AuthorList = ({ data, pageContext }) => {
 };
 
 export default AuthorList;
+
+// Trzeba ogarnąć lokalizacje tych danych, obecnie sa pobierane na czuja
+// i nie minstancji w Sanity Studio
+
+export const Head = ({ data }) => {
+  const dataSeo = data.allSanityAuthor.seo || {};
+
+  const title = dataSeo.title;
+  const description = dataSeo.description;
+
+  return <SEO title={title} description={description} />;
+};

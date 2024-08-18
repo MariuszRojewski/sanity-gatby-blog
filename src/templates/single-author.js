@@ -50,7 +50,6 @@ function SingleAuthor({ data }) {
 
   return (
     <PageSpace top={80} bottom={100}>
-      <SEO title={author.name} />
       <div className="container">
         <SingleAuthorStyles>
           <div className="author-header">
@@ -74,4 +73,11 @@ function SingleAuthor({ data }) {
 
 export default SingleAuthor;
 
-export const Head = () => <SEO title="Post" />;
+export const Head = ({ data }) => {
+  const dataSeo = data.sanityAuthor.seo || {};
+
+  const title = dataSeo.title;
+  const description = dataSeo.description;
+
+  return <SEO title={title} description={description} />;
+};

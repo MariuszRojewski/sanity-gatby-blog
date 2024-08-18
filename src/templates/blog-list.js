@@ -61,4 +61,14 @@ const BlogList = ({ data, pageContext }) => {
 
 export default BlogList;
 
-export const Head = () => <SEO title="Blogs" />;
+// Trzeba ogarnąć lokalizacje tych danych, obecnie sa pobierane na czuja
+// i nie minstancji w Sanity Studio
+
+export const Head = ({ data }) => {
+  const dataSeo = data.allSanityBlog.seo || {};
+
+  const title = dataSeo.title;
+  const description = dataSeo.description;
+
+  return <SEO title={title} description={description} />;
+};

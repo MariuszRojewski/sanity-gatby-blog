@@ -68,4 +68,11 @@ const SingleCategory = ({ data }) => {
 
 export default SingleCategory;
 
-export const Head = () => <SEO title="Single Category" />;
+export const Head = ({ data }) => {
+  const dataSeo = data.sanityCategory.seo || {};
+
+  const title = dataSeo.title;
+  const description = dataSeo.description;
+
+  return <SEO title={title} description={description} />;
+};
